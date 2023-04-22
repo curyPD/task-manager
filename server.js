@@ -5,20 +5,7 @@ const router = express.Router();
 app.use(express.json());
 app.use("/api", router);
 
-const todos = [
-    {
-        id: 1,
-        content: "Create a hard-coded sample to-do",
-        isImportant: false,
-        isCompleted: false,
-    },
-    {
-        id: 2,
-        content: "Create REST API to allow client-server communication",
-        isImportant: false,
-        isCompleted: false,
-    },
-];
+const todos = [];
 
 router.get("/todos", (_, res) => {
     res.json(todos);
