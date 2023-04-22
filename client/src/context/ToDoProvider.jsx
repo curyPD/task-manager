@@ -14,7 +14,6 @@ export default function ToDoProvider({ children }) {
         const getToDos = async function () {
             const res = await fetch("api/todos");
             const data = await res.json();
-            console.log(data);
             setToDos(data);
         };
         getToDos();

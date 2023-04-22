@@ -14,7 +14,7 @@ router.get("/todos", (_, res) => {
 router.post("/todos", (req, res) => {
     if (!req.body) return res.sendStatus(400);
     const { content } = req.body;
-    const id = Math.max(...todos.map((t) => t.id)) + 1;
+    const id = todos.length ? Math.max(...todos.map((t) => t.id)) + 1 : 1;
     const newToDo = {
         id,
         content,
@@ -31,7 +31,6 @@ router.patch("/todos/:id", (req, res) => {
     if (!toDo) return res.sendStatus(404);
     if (!req.body) return res.sendStatus(400);
     const updatedData = req.body;
-    console.log(updatedData);
     const updatedToDo = { ...toDo, ...updatedData };
     todos.splice(todos.indexOf(toDo), 1, updatedToDo);
     res.json(updatedToDo);
